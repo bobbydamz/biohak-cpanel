@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    #fff7b0 0%,
+    #f3f7b1 20%,
+    #e7f7b3 40%,
+    #ddf7ba 60%,
+    #d6f7d0 80%,
+    #cff7e7 100%
+  );
+  background-attachment: fixed;
+  color: #2a2a2a;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #7cb518;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Leaf-vein draw-in animation for the signature element */
+@keyframes draw-vein {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.vein-path {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: draw-vein 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vein-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+    opacity: 1;
+  }
+}
