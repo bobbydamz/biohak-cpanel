@@ -4,6 +4,10 @@ import { useState, FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+const GOOGLE_FORM_ACTION =
+  "https://docs.google.com/forms/u/0/d/e/1FAIpQLScrWJiKGiFfwfl2kCowa8XBzzFbOzVCMcDbavR1veaXxTfnIA/formResponse";
+const GOOGLE_FORM_EMAIL_ENTRY = "entry.421251072";
+
 export default function EmailSignup() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -12,14 +16,16 @@ export default function EmailSignup() {
     e.preventDefault();
     setStatus("submitting");
 
-    // STUB: replace this block with your real signup destination.
-    // Examples:
-    //   Mailchimp:    POST to /api/subscribe (a route you add) which forwards to Mailchimp's API
-    //   Google Form:  POST to the form's formResponse URL with the right entry.* field name
-    //   ConvertKit:   POST to https://api.convertkit.com/v3/forms/{FORM_ID}/subscribe
     try {
-      await new Promise((resolve) => setTimeout(resolve, 600)); // simulated latency
-      console.log("Signup stub — email captured:", email);
+      const formData = new FormData();
+      formData.append(GOOGLE_FORM_EMAIL_ENTRY, email);
+      // Google Forms doesn't send CORS headers, so the response is opaque —
+      // "no-cors" lets the POST go through without the fetch throwing on it.
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
       setStatus("success");
     } catch {
       setStatus("error");
