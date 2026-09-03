@@ -19,9 +19,11 @@ body {
   background: linear-gradient(
     180deg,
     #fff7b0 0%,
-    #f3f7b1 25%,
-    #d9ef9a 60%,
-    #b8e485 100%
+    #f3f7b1 20%,
+    #e7f7b3 40%,
+    #ddf7ba 60%,
+    #d6f7d0 80%,
+    #cff7e7 100%
   );
   background-attachment: fixed;
   color: #2a2a2a;
