@@ -79,7 +79,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative z-10 w-full px-6 text-center shrink-0">
-        <p className="text-[0.65rem] sm:text-sm text-ink/60 tracking-wide">
+        <p className="text-[0.65rem] sm:text-sm text-ink tracking-wide">
           Made with science. Inspired by wellbeing.
         </p>
       </footer>
