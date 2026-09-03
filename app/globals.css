@@ -26,6 +26,8 @@ body {
     #cff7e7 100%
   );
   background-attachment: fixed;
+  background-size: 100% 160%;
+  background-position: top;
   color: #2a2a2a;
 }
 
